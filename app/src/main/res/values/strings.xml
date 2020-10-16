@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RecipeApp</string>
+    <string name="error_general">Error,Try Again</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_data">No Data Available Now</string>
+    <string name="search">Enter Recipe Name Here</string>
+
+    <string name="calories">Calories / </string>
+    <string name="carbos">Carbos / </string>
+    <string name="difficulty">Difficulty/ </string>
+    <string name="fats">Fats / </string>
+    <string name="proteins">Proteins / </string>
+    <string name="time">Time /</string>
+
+    <string name="all">Show All Calories </string>
+    <string name="high">Sort By High Calories</string>
+    <string name="low"> Sort By Low Calories </string>
+
+
+</resources>

@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+
+    defaultConfig {
+        applicationId "com.recipe.app"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\gt\\AndroidStudioProjects\\Jarir-Pharmacy\\Jarir.jks')
+            storePassword "Jarir12345"
+            keyPassword "Jarir12345"
+            keyAlias 'Jarir'
+        }
+    }
+
+    buildTypes {
+        debug {
+            initWith debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            debuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "RecipeApp-${variant.buildType.name}-v${variant.versionCode}.apk"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.core:core-ktx:$kotlinKtxVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$extjunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    //noinspection LifecycleAnnotationProcessorWithJava8
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$base_rv_version"
+    implementation("com.github.bumptech.glide:glide:$glide_version") {exclude group: "com.android.support"}
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.blankj:utilcode:$blankj_version"
+    implementation "com.valdesekamdem.library:md-toast:$mdToast"
+    implementation "com.etebarian:meow-bottom-navigation:$bottomNav"
+    implementation "de.hdodenhof:circleimageview:$circle_image"
+    implementation "com.romandanylyk:pageindicatorview:$pageindicatorview"
+
+
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-moshi:2.8.1"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.6.0"
+    implementation "com.blankj:utilcode:1.23.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+
+}

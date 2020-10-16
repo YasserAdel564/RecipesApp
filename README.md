@@ -1,6 +1,6 @@
 ## RecipesApp
 
-## RecipesApp is App For Show Fat and Clories of Food
+ RecipesApp is App For Show Fat and Clories of Food
 
 ## Features
 - [x] Kotlin
